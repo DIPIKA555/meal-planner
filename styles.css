@@ -1,0 +1,10 @@
+table{
+    background-color: aliceblue;
+}
+th{
+    font-size: x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+td, th{
+    text-align: center;
+}
