@@ -11,16 +11,16 @@ th {
 }
 
 ul {
-  list-style: none; 
+  list-style: none;
 }
 
 ul li::before {
-  content: "\2022"; 
-  color: #1e56a0; 
-  font-weight: bold; 
-  display: inline-block; 
-  width: 1em; 
-  margin-left: -1.3em; 
+  content: "\2022";
+  color: #1e56a0;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.3em;
 }
 
 /* loader */
