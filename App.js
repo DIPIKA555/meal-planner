@@ -10,9 +10,6 @@ const ingredientSection = document.getElementById("ingredients");
 const stepsSection = document.getElementById("steps");
 const equipmentSection = document.getElementById("equipment");
 const recipeSection = document.getElementById("recipe-section");
-// const API_KEY = "b7779b5e7b0c43b8a91ad41ad95688c9"
-// const API_KEY = "3ce9298c607f4739a1349e61ece485fa";
-const API_KEY = "98ba766b4a9949fe8c5600bc54b50220";
 
 const getCalorie = () => {
   let hv = heightInput.value;
@@ -22,8 +19,10 @@ const getCalorie = () => {
   let avv = activityInput.value;
   let bmr;
 
-  if((hv === "" || hv <= 0) || (wv === "" || wv <= 0) || (av === "" || av <= 0)){
-    alert("All input field should not be empty and should not have negetive value")
+  if (hv === "" || hv <= 0 || wv === "" || wv <= 0 || av === "" || av <= 0) {
+    alert(
+      "All input field should not be empty and should not have negetive value"
+    );
     return;
   }
 
@@ -84,7 +83,7 @@ const generateMealsCard = (datas) => {
       });
     cards += `
         <div class="col-md-4 d-flex justify-content-center mb-2">
-            <div class="card" style="width: 18rem;">
+            <div class="card baseBlock" style="width: 18rem;">
                 <img src=${imgURL} class="card-img-top"
                     alt="meal 1">
                 <div class="card-body">
@@ -113,10 +112,9 @@ const btnRecipe = async (data) => {
     })
     .then((data) => {
       information = data;
-      console.log(information);
     });
 
-    recipeSection.textContent = `${information.title} Recipe`;
+  recipeSection.textContent = `${information.title} Recipe`;
 
   //   Ingridents
   let htmlData = ``;
@@ -174,7 +172,6 @@ const btnRecipe = async (data) => {
     })
     .then((data) => {
       equip = data;
-      console.log(equip);
     });
 
   let equipData = ``;
