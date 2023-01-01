@@ -93,8 +93,6 @@ const generateMealsCard = (datas) => {
 };
 
 const btnRecipe = async (data) => {
-  document.getElementById("loader").style.display = "block";
-
   ingredientSection.innerHTML = "";
   stepsSection.innerHTML = "";
   equipmentSection.innerHTML = "";
@@ -107,39 +105,54 @@ const btnRecipe = async (data) => {
     })
     .then((data) => {
       information = data;
+      console.log(information);
     });
 
   //   Ingridents
   let htmlData = ``;
+  let inCardDiv = document.createElement("div");
+  inCardDiv.classList.add("carddesign", "card", "h-100");
+  let inCardBody = document.createElement("div");
+  inCardBody.classList.add("card-body");
+  let inOverlay = document.createElement("div");
+  inOverlay.classList.add("overlay");
   let ul = document.createElement("ul");
-  ul.classList.add("list-group");
   information.extendedIngredients.map((ingre) => {
     htmlData += `
-        <li class="list-group-item ">${ingre.original}</li>
+        <li>${ingre.original}</li>
         `;
   });
   ul.innerHTML = htmlData;
-  let ingreH1 = document.createElement("h1");
+  let ingreH1 = document.createElement("h3");
   ingreH1.textContent = "INGREDIENTS";
-  ingreH1.classList.add("m-3", "text-center");
-  ingredientSection.appendChild(ingreH1);
-  ingredientSection.appendChild(ul);
+  inCardBody.appendChild(inOverlay);
+  inCardBody.appendChild(ingreH1);
+  inCardBody.appendChild(ul);
+  inCardDiv.appendChild(inCardBody);
+  ingredientSection.appendChild(inCardDiv);
 
   //   Steps
   let stepsHtml = ``;
+  let stCardDiv = document.createElement("div");
+  stCardDiv.classList.add("carddesign", "card", "h-100");
+  let stCardBody = document.createElement("div");
+  stCardBody.classList.add("card-body");
+  let stOverlay = document.createElement("div");
+  stOverlay.classList.add("overlay");
   let stepsOl = document.createElement("ol");
-  stepsOl.classList.add("list-group");
   information.analyzedInstructions[0].steps.map((step) => {
     stepsHtml += `
         <li>${step.step}</li>
         `;
   });
   stepsOl.innerHTML = stepsHtml;
-  let stepsH1 = document.createElement("h1");
+  let stepsH1 = document.createElement("h3");
   stepsH1.textContent = "STEPS";
-  stepsH1.classList.add("m-3", "text-center");
-  stepsSection.appendChild(stepsH1);
-  stepsSection.appendChild(stepsOl);
+  stCardBody.appendChild(stOverlay);
+  stCardBody.appendChild(stepsH1);
+  stCardBody.appendChild(stepsOl);
+  stCardDiv.appendChild(stCardBody);
+  stepsSection.appendChild(stCardDiv);
 
   // equipmentSection
   const urlEquip = `https://api.spoonacular.com/recipes/${data}/equipmentWidget.json?apiKey=${API_KEY}&includeNutrition=false`;
@@ -155,22 +168,26 @@ const btnRecipe = async (data) => {
     });
 
   let equipData = ``;
+  let eqCardDiv = document.createElement("div");
+  eqCardDiv.classList.add("carddesign", "card", "h-100");
+  let eqCardBody = document.createElement("div");
+  eqCardBody.classList.add("card-body");
+  let eqOverlay = document.createElement("div");
+  eqOverlay.classList.add("overlay");
   let equipUl = document.createElement("ul");
-  equipUl.classList.add("list-group");
   equip.equipment.map((equip) => {
     equipData += `
-            <li class="list-group-item ">${equip.name}</li>
+            <li>${equip.name}</li>
             `;
   });
   equipUl.innerHTML = equipData;
-  let equipH1 = document.createElement("h1");
+  let equipH1 = document.createElement("h3");
   equipH1.textContent = "EQUIPMENT";
-  equipH1.classList.add("m-3", "text-center");
-  equipmentSection.appendChild(equipH1);
-  equipmentSection.appendChild(equipUl);
-
-  document.getElementById("loader").style.display = "none";
-
+  eqCardBody.appendChild(eqOverlay);
+  eqCardBody.appendChild(equipH1);
+  eqCardBody.appendChild(equipUl);
+  eqCardDiv.appendChild(eqCardBody);
+  equipmentSection.appendChild(eqCardDiv);
 };
 
 submit.addEventListener("click", getCalorie);
