@@ -10,6 +10,19 @@ th {
   text-align: center;
 }
 
+ul {
+  list-style: none; 
+}
+
+ul li::before {
+  content: "\2022"; 
+  color: #1e56a0; 
+  font-weight: bold; 
+  display: inline-block; 
+  width: 1em; 
+  margin-left: -1.3em; 
+}
+
 /* loader */
 #loader {
   height: 0;
@@ -19,15 +32,12 @@ th {
   border-right-color: #888;
   border-radius: 22px;
   -webkit-animation: rotate 1s infinite linear;
-  /* left, top and position just for the demo! */
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
 @-webkit-keyframes rotate {
-  /* 100% keyframe for  clockwise. 
-       use 0% instead for anticlockwise */
   100% {
     -webkit-transform: rotate(360deg);
   }
