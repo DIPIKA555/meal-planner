@@ -9,6 +9,7 @@ const mealsDetails = document.getElementById("details");
 const ingredientSection = document.getElementById("ingredients");
 const stepsSection = document.getElementById("steps");
 const equipmentSection = document.getElementById("equipment");
+const recipeSection = document.getElementById("recipe-section");
 // const API_KEY = "b7779b5e7b0c43b8a91ad41ad95688c9"
 // const API_KEY = "3ce9298c607f4739a1349e61ece485fa";
 const API_KEY = "98ba766b4a9949fe8c5600bc54b50220";
@@ -93,6 +94,7 @@ const generateMealsCard = (datas) => {
 };
 
 const btnRecipe = async (data) => {
+  recipeSection.innerHTML = "";
   ingredientSection.innerHTML = "";
   stepsSection.innerHTML = "";
   equipmentSection.innerHTML = "";
@@ -108,6 +110,8 @@ const btnRecipe = async (data) => {
       console.log(information);
     });
 
+    recipeSection.textContent = `${information.title} Recipe`;
+    
   //   Ingridents
   let htmlData = ``;
   let inCardDiv = document.createElement("div");
