@@ -21,6 +21,12 @@ const getCalorie = () => {
   let gv = genderInput.value;
   let avv = activityInput.value;
   let bmr;
+
+  if((hv === "" || hv <= 0) || (wv === "" || wv <= 0) || (av === "" || av <= 0)){
+    alert("All input field should not be empty and should not have negetive value")
+    return;
+  }
+
   if (gv === "female") {
     bmr = 655.1 + 9.563 * wv + 1.85 * hv - 4.676 * av;
   } else if (gv === "male") {
@@ -111,7 +117,7 @@ const btnRecipe = async (data) => {
     });
 
     recipeSection.textContent = `${information.title} Recipe`;
-    
+
   //   Ingridents
   let htmlData = ``;
   let inCardDiv = document.createElement("div");
