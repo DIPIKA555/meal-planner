@@ -15,8 +15,3 @@
 ![Screenshot]()
 
 
-## 🚀 About Me
-Hey 👋, I'm Aniket Pradhan, aspiring fullstack developer.
-
-
-[![portfolio](https://img.shields.io/badge/MY_PORTFOLIO-green)](https://aniket-dev.netlify.app/)
